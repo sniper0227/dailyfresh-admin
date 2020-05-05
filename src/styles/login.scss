@@ -1,0 +1,181 @@
+/*
+*登录 login
+*/
+//登录页面
+#login {
+  height: 100vh;
+  background-color: #6cd3d2;
+
+  &>div {
+    width: 100%;
+    height: 820px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-image: url(../assets/images/login-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .logo {
+    width: 1000px;
+    margin: auto;
+    padding-top: 40px;
+  }
+
+  .main {
+    width: 1000px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+
+    .pic {
+      margin: 70px 0 0 70px;
+      width: 512px;
+      height: 417px;
+      position: relative;
+
+      .centerPic {
+        width: 368px;
+        height: 401px;
+        background: url(../assets/images/login-center.png) no-repeat;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+      }
+
+      .centerAnimation {
+        width: 292px;
+        height: 292px;
+        background: url(../assets/images/login-animation.png) no-repeat;
+        position: absolute;
+        top: 35px;
+        left: 35px;
+        animation: animation 2s linear infinite;
+        z-index: 2;
+      }
+
+      @keyframes animation {
+        0% {
+          transform: scale(0.7);
+          opacity: 1
+        }
+        50% {
+          transform: scale(0.9);
+          opacity: 0.7
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.1
+        }
+      }
+
+      .aircraft {
+        width: 28px;
+        height: 200px;
+        top: -15px;
+        left: 170px;
+        transform-origin: center bottom;
+        animation: aircraft 12s linear infinite;
+        transform: rotate(36deg);
+        z-index: 3;
+        position: absolute;
+
+        i {
+          z-index: 4;
+          background: url(../assets/images/login-small.png) no-repeat 0 -264px;
+          width: 29px;
+          height: 27px;
+          display: block;
+        }
+      }
+
+      @keyframes aircraft {
+        from {
+          transform: rotate(36deg);
+        }
+        to {
+          transform: rotate(-324deg);
+        }
+      }
+
+      .icon_1 {
+        z-index: 4;
+        background: url(../assets/images/login-small.png) no-repeat 0 0;
+        width: 120px;
+        height: 42px;
+        left: 78px;
+        top: -21px;
+        position: absolute;
+      }
+
+      .icon_2 {
+        z-index: 4;
+        background: url(../assets/images/login-small.png) no-repeat 0 -44px;
+        width: 120px;
+        height: 61px;
+        left: -67px;
+        top: 66px;
+        position: absolute;
+      }
+
+      .icon_3 {
+        z-index: 4;
+        background: url(../assets/images/login-small.png) no-repeat 0 -104px;
+        width: 120px;
+        height: 42px;
+        left: -50px;
+        top: 262px;
+        position: absolute;
+      }
+
+      .icon_4 {
+        z-index: 4;
+        background: url(../assets/images/login-small.png) no-repeat 0 -146px;
+        width: 120px;
+        height: 62px;
+        left: 300px;
+        top: 262px;
+        position: absolute;
+      }
+
+      .icon_5 {
+        z-index: 4;
+        background: url(../assets/images/login-small.png) no-repeat 0 -208px;
+        width: 120px;
+        height: 43px;
+        left: 340px;
+        top: 118px;
+        position: absolute;
+      }
+    }
+
+    .el-form {
+      margin-top: 70px;
+      padding: 30px 50px;
+      width: 390px;
+      height: 350px;
+      background: #fff;
+      border-radius: 3px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+
+      h3 {
+        margin: 0 0 20px;
+        font-size: 18px;
+        font-weight: normal;
+      }
+
+      .el-form-item {
+        margin-right: 0;
+        width: 100%;
+
+        .el-form-item__content, .el-button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

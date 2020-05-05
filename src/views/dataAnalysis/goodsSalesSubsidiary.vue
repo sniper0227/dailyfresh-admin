@@ -1,0 +1,91 @@
+<template>
+  <div class="app-container">
+
+    <!-- 查询和其他操作 -->
+    <el-form inline size="small">
+      <el-form-item label="商品名称">
+        <el-input v-model="listQuery.name" clearable placeholder="请输入商品名称"/>
+      </el-form-item>
+      <el-form-item label="推广时间">
+        <el-date-picker
+          v-model="listQuery.startTime"
+          type="date"
+          placeholder="开始时间"
+          value-format="yyyy-MM-dd">
+        </el-date-picker>
+        <span> - </span>
+        <el-date-picker
+          v-model="listQuery.endTime"
+          type="date"
+          placeholder="结束时间"
+          value-format="yyyy-MM-dd">
+        </el-date-picker>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" plain icon="el-icon-search" @click="handleFilter">查找</el-button>
+      </el-form-item>
+    </el-form>
+
+    <!-- 查询结果 -->
+    <el-table v-loading="listLoading" :data="list" element-loading-text="正在查询中。。。" stripe>
+      <el-table-column align="center" label="商品名称" prop="nameCommodity"/>
+      <el-table-column align="center" label="所属门店" prop="subordinateToStores"/>
+      <el-table-column align="center" label="销售总量" prop="totalSales"/>
+      <el-table-column align="center" label="销售金额" prop="consumptionAmount"/>
+      <el-table-column align="center" label="购买用户昵称" prop="nickname"/>
+      <el-table-column align="center" label="推广时间" prop="time"/>
+    </el-table>
+
+    <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit"
+                @pagination="getList"/>
+  </div>
+</template>
+
+<script>
+  import { dataAnalysis } from '@/api/dataAnalysis'
+  import Pagination from '@/components/Pagination'
+
+  export default {
+    name: 'goodsSalesSubsidiary',
+    components: { Pagination },
+    data() {
+      return {
+        list: [
+          {
+            userId: undefined,
+            nameCommodity:'苹果',
+            subordinateToStores: '光谷',
+            totalSales: '200',
+            consumptionAmount:'80',
+            nickname: '昵称',
+            time: '2019-10-01 12:00:00'
+          }
+        ],
+        listLoading: true,
+        statusDic: ['是', '否'],
+        total: 0,
+        listQuery: {
+          page: 1,
+          limit: 20,
+          name: '',
+          startTime: '',
+          endTime: '',
+          sort: 'add_time',
+          order: 'desc'
+        }
+      }
+    },
+    created() {
+      this.getList()
+    },
+    methods: {
+      getList() {
+        this.listLoading = false
+      },
+      handleFilter() {
+        this.listQuery.page = 1
+        this.getList()
+      }
+    }
+  }
+</script>
